@@ -35,9 +35,20 @@ const switchTheme = function (event) {
   );
   if (event.target.checked) {
     darkMode();
+    localStorage.setItem("theme", "dark");
   } else {
     lightMode();
+    localStorage.setItem("theme", "light");
   }
+  //   console.log(event.target.checked);
 };
 // Event listener
 toggleSwitch.addEventListener("change", switchTheme);
+
+const currentTheme = localStorage.getItem("theme");
+console.log(currentTheme);
+if (currentTheme === "dark") {
+  toggleSwitch.checked = true;
+  darkMode();
+  document.documentElement.setAttribute("data-theme", `dark`);
+}
